@@ -5,7 +5,7 @@ import Faq from '../../Components/Faq/Faq'
 import Footer from '../../Components/Footer/Footer'
 
 export const metadata: Metadata = {
-  title: 'Join',
+  title: 'Join | AWSCC-SRMIST',
   description: 'Join AWS Cloud Clubs - SRMIST. Recruitment starting soon. Follow us to stay updated.',
 }
 

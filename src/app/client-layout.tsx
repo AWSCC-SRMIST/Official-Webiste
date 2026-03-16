@@ -1,9 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
-
-const AnimatedCursor = dynamic(() => import('react-animated-cursor'), { ssr: false })
+import Cursor from '../Components/Cursor/Cursor'
 
 export default function ClientLayout({
   children,
@@ -18,17 +16,7 @@ export default function ClientLayout({
 
   return (
     <>
-      {isDesktop && (
-        <AnimatedCursor
-          innerSize={8}
-          outerSize={35}
-          innerScale={1}
-          outerScale={1.7}
-          outerAlpha={0}
-          innerStyle={{ backgroundColor: '#fff' }}
-          outerStyle={{ border: '3px solid #fff' }}
-        />
-      )}
+      {isDesktop && <Cursor />}
       {children}
     </>
   )

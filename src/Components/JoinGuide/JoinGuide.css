@@ -169,12 +169,12 @@
 
 @media (max-width: 480px) {
   .join-section {
-    padding: 70px 20px 60px;
+    padding: 50px 20px 40px;
   }
 
   .join-coming-sub {
     font-size: 0.95rem;
-    margin-bottom: 48px;
+    margin-bottom: 28px;
   }
 
   .join-domain-card {
