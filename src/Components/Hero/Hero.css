@@ -261,8 +261,16 @@
 @media (max-width: 992px) {
   .hero-section {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 100px 24px 60px;
     text-align: center;
+    gap: 32px;
+  }
+
+  .hero-content {
+    flex: none;
+    max-width: 100%;
   }
 
   .hero-badge {
@@ -271,6 +279,7 @@
 
   .hero-actions {
     justify-content: center;
+    margin-bottom: 0;
   }
 
   .hero-stats-row {
@@ -278,6 +287,7 @@
   }
 
   .hero-illustration {
+    flex: none;
     max-width: 300px;
     margin: 0 auto;
   }
