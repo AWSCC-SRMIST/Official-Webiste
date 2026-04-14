@@ -1,7 +1,7 @@
 .events-section {
   padding: 80px 24px;
   background: transparent;
-  min-height: 60vh;
+  min-height: unset;
   position: relative;
   overflow: hidden;
 }
@@ -38,10 +38,6 @@
   margin: 0 auto;
 }
 
-.events-block {
-  /* Block wrapper */
-}
-
 .events-empty {
   display: flex;
   flex-direction: column;
@@ -74,28 +70,62 @@
   margin: 0;
 }
 
-.events-grid {
+/* --- New Native CSS Styles Replacing Tailwind --- */
+
+.mt-top {
+  margin-top: 32px;
+}
+
+.office-bearers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  /* Auto-fit dynamically packs columns. We use a very small min width (140px) 
+     so that we automatically get ~2 cols on mobile, and ~5-6 on desktop. */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
-.past-events-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  margin-top: 20px;
+.skeleton-card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: rgba(255, 255, 255, 0.08); 
+  border-radius: 16px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.past-event-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 24px;
-  align-items: start;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
-.past-event-poster {
-  width: 200px;
+.events-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171; /* Tailwind red-400 */
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.events-error h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ef4444; /* Tailwind red-500 */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .office-bearers-grid {
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Pack slightly smaller on tablets/phones */
+  }
 }
 
 @media (max-width: 480px) {
