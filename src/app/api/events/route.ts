@@ -2,22 +2,6 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const useMock = process.env.USE_MOCK_API === 'true';
-
-    if (useMock) {
-
-      const mockData = Array.from({ length: 6 }).map((_, i) => ({
-        id: `mock-${i}`,
-        name: `Office Bearer ${i + 1}`,
-        mimeType: 'image/jpeg',
-        webContentLink: `https://picsum.photos/seed/${i + 1}/400/600`,
-        thumbnailLink: `https://picsum.photos/seed/${i + 1}/150/225`
-      }));
-
-      return NextResponse.json({ files: mockData });
-    }
-
-    // --- Original Google Drive Logic ---
     const folderId = process.env.DRIVE_FOLDER_ID;
     const apiKey = process.env.DRIVE_API_KEY;
 
