@@ -77,4 +77,9 @@
     font-size: 0.8rem;
     padding: 7px 10px;
   }
+
+  .brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+  }
 }

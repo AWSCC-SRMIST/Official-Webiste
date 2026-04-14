@@ -27,7 +27,7 @@ const NavBar = () => {
     <nav className={`navbar-custom ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner">
         <Link href="/" className="navbar-brand">
-          <Image src="/logo.png" alt="AWS Cloud Clubs SRMIST" width={32} height={32} className="brand-logo" />
+          <Image src="/logo.png" alt="AWS Cloud Clubs SRMIST" width={56} height={56} className="brand-logo" />
         </Link>
 
         <div className="nav-links">
