@@ -25,3 +25,9 @@ yarn-error.log*
 
 # brainstorming artifacts
 .superpowers/
+
+# editor config
+.vscode/
+
+# internal docs
+docs/superpowers/
