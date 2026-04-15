@@ -1,59 +1,58 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import EventsCard from './EventsCard/EventsCard';
+import EventCard from './EventCard/EventCard';
 import './EventsSection.css';
 
 const EventsSection = () => {
-  const [images, setImages] = useState([]);
+  const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchEvents = async () => {
       try {
         const response = await fetch('/api/events');
-
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || "Failed to fetch images");
+          throw new Error(errorData.error || 'Failed to fetch events');
         }
-
         const data = await response.json();
-        setImages(data.files || []);
+        setEvents(data);
       } catch (err) {
-        console.error("Error fetching event images:", err);
+        console.error('Error fetching events:', err);
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchImages();
+    fetchEvents();
   }, []);
 
   return (
     <section className="events-section">
       <div className="events-container">
         <SectionHeader title="Events" subtitle="Workshops, bootcamps, and more" />
+
         <div className="events-certs-link-wrap">
           <Link href="/certificates" className="events-certs-link">
             🎓 View Certificates
           </Link>
         </div>
 
-        {/* Loading State */}
+        {/* Loading skeleton */}
         {isLoading && (
-          <div className="office-bearers-grid mt-top">
+          <div className="events-grid mt-top">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="skeleton-card"></div>
+              <div key={i} className="event-skeleton-card" />
             ))}
           </div>
         )}
 
-        {/* Error State */}
+        {/* Error */}
         {error && !isLoading && (
           <div className="events-error mt-top">
             <h3>Oops! Something went wrong</h3>
@@ -61,22 +60,25 @@ const EventsSection = () => {
           </div>
         )}
 
-        {/* Image Grid */}
-        {!isLoading && !error && images.length > 0 && (
-          <div className="office-bearers-grid mt-top">
-            {images.map((img) => (
-              <EventsCard
-                key={img.id}
-                poster={`https://drive.google.com/thumbnail?id=${img.id}&sz=w400`}
-                title={img.name?.replace(/\.[^/.]+$/, "")}
-                link={img.webContentLink}
+        {/* Event grid */}
+        {!isLoading && !error && events.length > 0 && (
+          <div className="events-grid mt-top">
+            {events.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                title={event.title}
+                date={event.date}
+                coverImageId={event.coverImageId}
+                highlights={event.highlights}
+                photoCount={event.photoCount}
               />
             ))}
           </div>
         )}
 
-        {/* Empty State */}
-        {!isLoading && !error && images.length === 0 && (
+        {/* Empty state */}
+        {!isLoading && !error && events.length === 0 && (
           <div className="events-empty">
             <div className="events-empty-icon">
               <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="80">

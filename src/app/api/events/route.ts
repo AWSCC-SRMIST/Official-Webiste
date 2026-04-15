@@ -1,38 +1,28 @@
 import { NextResponse } from 'next/server';
+import { events } from '../../../data/events';
 
 export async function GET() {
-  try {
-    const folderId = process.env.DRIVE_FOLDER_ID;
-    const apiKey = process.env.DRIVE_API_KEY;
+  const apiKey = process.env.DRIVE_API_KEY;
 
-    if (!folderId || !apiKey) {
-      return NextResponse.json(
-        { error: "Missing Google Drive API credentials." },
-        { status: 500 }
-      );
-    }
-
-    const endpoint = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType+contains+'image/'&fields=files(id,name,mimeType,webContentLink,thumbnailLink)&key=${apiKey}`;
-
-    const response = await fetch(endpoint, {
-      next: { revalidate: 3600 }
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      return NextResponse.json(
-        { error: errorData.error?.message || "Failed to fetch images from Google Drive API" },
-        { status: response.status }
-      );
-    }
-
-    const data = await response.json();
-    return NextResponse.json(data);
-  } catch (err: any) {
-    console.error("Error fetching event images:", err);
-    return NextResponse.json(
-      { error: err.message || "Internal server error" },
-      { status: 500 }
-    );
+  if (!apiKey) {
+    // Return events metadata without photo counts if Drive API key is missing
+    return NextResponse.json(events.map((e) => ({ ...e, photoCount: null })));
   }
+
+  // Fetch photo counts for all event folders in parallel
+  const eventsWithCounts = await Promise.all(
+    events.map(async (event) => {
+      try {
+        const endpoint = `https://www.googleapis.com/drive/v3/files?q='${event.folderId}'+in+parents+and+mimeType+contains+'image/'&fields=files(id)&key=${apiKey}`;
+        const res = await fetch(endpoint, { next: { revalidate: 3600 } });
+        if (!res.ok) return { ...event, photoCount: null };
+        const data = await res.json();
+        return { ...event, photoCount: (data.files as unknown[])?.length ?? null };
+      } catch {
+        return { ...event, photoCount: null };
+      }
+    })
+  );
+
+  return NextResponse.json(eventsWithCounts);
 }

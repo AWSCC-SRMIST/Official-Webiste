@@ -1,7 +1,6 @@
 .events-section {
   padding: 80px 24px;
   background: transparent;
-  min-height: unset;
   position: relative;
   overflow: hidden;
 }
@@ -34,10 +33,69 @@
 }
 
 .events-container {
-  max-width: 1100px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
+.mt-top {
+  margin-top: 32px;
+}
+
+/* ── 3-column event grid ─────────────────────────────────── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ── Skeleton loading ────────────────────────────────────── */
+.event-skeleton-card {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  aspect-ratio: 4 / 5;
+  animation: skeleton-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ── Error state ─────────────────────────────────────────── */
+.events-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.events-error h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ef4444;
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
 .events-empty {
   display: flex;
   flex-direction: column;
@@ -48,10 +106,10 @@
 
 .events-empty-icon {
   opacity: 0.8;
-  animation: emptyFloat 3s ease-in-out infinite;
+  animation: empty-float 3s ease-in-out infinite;
 }
 
-@keyframes emptyFloat {
+@keyframes empty-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
@@ -70,74 +128,11 @@
   margin: 0;
 }
 
-/* --- New Native CSS Styles Replacing Tailwind --- */
-
-.mt-top {
-  margin-top: 32px;
-}
-
-.office-bearers-grid {
-  display: grid;
-  /* Auto-fit dynamically packs columns. We use a very small min width (140px) 
-     so that we automatically get ~2 cols on mobile, and ~5-6 on desktop. */
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
-  width: 100%;
-}
-
-.skeleton-card {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  background-color: rgba(255, 255, 255, 0.08); 
-  border-radius: 16px;
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
-.events-error {
-  background-color: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: #f87171; /* Tailwind red-400 */
-  border-radius: 16px;
-  padding: 32px;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.events-error h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #ef4444; /* Tailwind red-500 */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .office-bearers-grid {
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Pack slightly smaller on tablets/phones */
-  }
-}
-
-@media (max-width: 480px) {
-  .events-section {
-    padding: 40px 20px;
-  }
-}
-
+/* ── Certs link ──────────────────────────────────────────── */
 .events-certs-link-wrap {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .events-certs-link {
@@ -160,4 +155,10 @@
   background: rgba(184, 54, 254, 0.1);
   border-color: #FA46F2;
   color: #FA46F2;
+}
+
+@media (max-width: 480px) {
+  .events-section {
+    padding: 40px 20px;
+  }
 }
