@@ -25,8 +25,8 @@ export const events: Event[] = [
     id: "club-inauguration-2026",
     title: "Club Inauguration",
     date: "20 April 2026",
-    folderId: "REPLACE_WITH_DRIVE_FOLDER_ID",
-    coverImageId: "REPLACE_WITH_COVER_IMAGE_ID",
+    folderId: "1jzxVx5pnNH-heGDZyj_8LgkMkXTrQBru",
+    coverImageId: "1g6QKAHSP6MVtZllL-DX2HtYjWyNBnXkx",
     highlights: [
       "Official launch of AWS Cloud Club SRMIST",
       "Meet the team & leadership",

@@ -15,9 +15,13 @@ export async function GET(
       );
     }
 
-    const endpoint = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType+contains+'image/'&fields=files(id,name,mimeType)&orderBy=name&key=${apiKey}`;
+    const q = encodeURIComponent(`'${folderId}' in parents and mimeType contains 'image/'`);
+    const endpoint = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name,mimeType)&orderBy=name&key=${apiKey}`;
 
-    const response = await fetch(endpoint, { next: { revalidate: 3600 } });
+    const response = await fetch(endpoint, {
+      next: { revalidate: 3600 },
+      headers: { Referer: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000' },
+    });
 
     if (!response.ok) {
       const errorData = await response.json();

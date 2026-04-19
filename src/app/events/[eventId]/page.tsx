@@ -6,7 +6,7 @@ import Footer from '../../../Components/Footer/Footer';
 import GalleryClient from './GalleryClient';
 
 interface Props {
-  params: { eventId: string };
+  params: Promise<{ eventId: string }>;
 }
 
 export async function generateStaticParams() {
@@ -14,7 +14,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const event = events.find((e) => e.id === params.eventId);
+  const { eventId } = await params;
+  const event = events.find((e) => e.id === eventId);
   if (!event) return { title: 'Event Not Found | AWSCC-SRMIST' };
   return {
     title: `${event.title} | AWSCC-SRMIST`,
@@ -22,8 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function EventGalleryPage({ params }: Props) {
-  const event = events.find((e) => e.id === params.eventId);
+export default async function EventGalleryPage({ params }: Props) {
+  const { eventId } = await params;
+  const event = events.find((e) => e.id === eventId);
   if (!event) notFound();
 
   return (

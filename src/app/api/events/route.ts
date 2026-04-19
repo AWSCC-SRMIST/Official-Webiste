@@ -13,8 +13,12 @@ export async function GET() {
   const eventsWithCounts = await Promise.all(
     events.map(async (event) => {
       try {
-        const endpoint = `https://www.googleapis.com/drive/v3/files?q='${event.folderId}'+in+parents+and+mimeType+contains+'image/'&fields=files(id)&key=${apiKey}`;
-        const res = await fetch(endpoint, { next: { revalidate: 3600 } });
+        const q = encodeURIComponent(`'${event.folderId}' in parents and mimeType contains 'image/'`);
+        const endpoint = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id)&key=${apiKey}`;
+        const res = await fetch(endpoint, {
+          next: { revalidate: 3600 },
+          headers: { Referer: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000' },
+        });
         if (!res.ok) return { ...event, photoCount: null };
         const data = await res.json();
         return { ...event, photoCount: (data.files as unknown[])?.length ?? null };
