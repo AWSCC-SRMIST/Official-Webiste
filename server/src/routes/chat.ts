@@ -206,11 +206,17 @@ export function chatRouter(
           },
         }));
 
+        const initialText = choice?.message.content || "";
         messages.push({
           role: "assistant",
-          content: choice?.message.content ?? "",
+          content: initialText || null,
           tool_calls: sanitizedToolCalls,
         });
+
+        if (initialText) {
+          send({ type: "token", content: initialText });
+          assembled = initialText;
+        }
 
         for (const tc of sanitizedToolCalls) {
           const name = tc.function.name;
