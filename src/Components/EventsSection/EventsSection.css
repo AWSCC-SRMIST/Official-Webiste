@@ -1,5 +1,5 @@
 .events-section {
-  padding: 80px 24px;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5%, 4rem);
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -7,7 +7,7 @@
 
 .events-section::before {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 500px;
   height: 500px;
   background: rgba(184, 54, 254, 0.07);
@@ -17,11 +17,12 @@
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
+  z-index: 0;
 }
 
 .events-section::after {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 300px;
   background: rgba(235, 71, 254, 0.05);
@@ -30,11 +31,24 @@
   bottom: 0;
   right: 5%;
   pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 1440px) {
+  .events-section {
+    padding: clamp(4rem, 6vw, 5rem) clamp(2rem, 3%, 4rem);
+  }
 }
 
 .events-container {
-  max-width: 1140px;
+  max-width: 1280px;
   margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+  .events-container {
+    max-width: 1360px;
+  }
 }
 
 .mt-top {

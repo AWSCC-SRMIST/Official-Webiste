@@ -4,7 +4,7 @@ import EventsSection from "../../Components/EventsSection/EventsSection";
 import Footer from "../../Components/Footer/Footer";
 
 export const metadata: Metadata = {
-  title: "Events | AWSCC-SRMIST",
+  title: "Events | AWSSBG-SRMIST",
   description:
     "Upcoming and past events by AWS Student Builder Group - SRMIST. Workshops, bootcamps, and more.",
 };

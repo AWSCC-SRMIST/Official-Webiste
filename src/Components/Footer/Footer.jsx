@@ -7,25 +7,25 @@ import "./Footer.css";
 const socials = [
   {
     icon: <FaInstagram />,
-    href: "https://www.instagram.com/awscc.srmist/",
+    href: "https://www.instagram.com/awssbg.srmist/",
     label: "Instagram",
     color: "#E1306C",
   },
   {
     icon: <FaLinkedin />,
-    href: "https://www.linkedin.com/company/awscc-srmist/",
+    href: "https://www.linkedin.com/company/awssbg-srmist/",
     label: "LinkedIn",
     color: "#0A66C2",
   },
   {
     icon: <SiMeetup />,
-    href: "https://www.meetup.com/awscc-srmist/",
+    href: "https://www.meetup.com/awssbg-srmist/",
     label: "Meetup",
     color: "#ED1C40",
   },
   {
     icon: <FaGithub />,
-    href: "https://github.com/AWSCC-SRMIST",
+    href: "https://github.com/AWSSBG-SRMIST",
     label: "GitHub",
     color: "#ffffff",
   },

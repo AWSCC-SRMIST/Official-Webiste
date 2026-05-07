@@ -4,7 +4,7 @@ import CertificatesSection from '../../Components/CertificatesSection/Certificat
 import Footer from '../../Components/Footer/Footer'
 
 export const metadata: Metadata = {
-  title: 'Certificates | AWSCC-SRMIST',
+  title: 'Certificates | AWSSBG-SRMIST',
   description: 'Download your certificate from any AWS Student Builder Group SRMIST event.',
 }
 

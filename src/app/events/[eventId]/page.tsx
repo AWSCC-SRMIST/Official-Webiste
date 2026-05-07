@@ -16,9 +16,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { eventId } = await params;
   const event = events.find((e) => e.id === eventId);
-  if (!event) return { title: 'Event Not Found | AWSCC-SRMIST' };
+  if (!event) return { title: 'Event Not Found | AWSSBG-SRMIST' };
   return {
-    title: `${event.title} | AWSCC-SRMIST`,
+    title: `${event.title} | AWSSBG-SRMIST`,
     description: `Photo gallery for ${event.title} — ${event.date}`,
   };
 }

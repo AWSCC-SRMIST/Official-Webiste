@@ -1,5 +1,5 @@
 .faq-section {
-  padding: 20px 24px 80px;
+  padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 5%, 4rem) clamp(3rem, 8vw, 5rem);
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -7,7 +7,7 @@
 
 .faq-section::before {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 400px;
   height: 400px;
   background: rgba(184, 54, 254, 0.06);
@@ -17,10 +17,17 @@
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 1440px) {
+  .faq-section {
+    padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 3%, 4rem) clamp(4rem, 6vw, 5rem);
+  }
 }
 
 .faq-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 

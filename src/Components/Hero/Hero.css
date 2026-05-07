@@ -4,9 +4,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 120px 80px 80px;
+  padding: clamp(5rem, 10vw, 7rem) clamp(1rem, 5%, 4rem);
   overflow: hidden;
   gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4%, 2rem);
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-section {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: clamp(5rem, 8vw, 7rem) clamp(2rem, 3%, 4rem);
+  }
 }
 
 .hero-bg-grid {
@@ -20,10 +35,11 @@
 }
 
 .hero-glow {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero-glow-1 {

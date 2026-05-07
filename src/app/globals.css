@@ -14,6 +14,27 @@ body {
     linear-gradient(rgba(184, 54, 254, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(184, 54, 254, 0.04) 1px, transparent 1px);
   background-size: 50px 50px;
+  padding-top: clamp(5rem, 12vw, 7rem);
+}
+
+/* ── Responsive Container Utilities ── */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 clamp(1rem, 5%, 4rem);
+}
+
+/* ── Responsive Padding Utilities ── */
+.section-padding {
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5%, 4rem);
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1360px;
+    padding: 0 clamp(2rem, 3%, 4rem);
+  }
 }
 
 .footer {

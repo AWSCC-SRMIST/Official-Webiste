@@ -1,15 +1,42 @@
 /* ── Section wrapper ── */
 
 .team-section {
-  padding: 48px 16px 64px;
+  padding: clamp(3rem, 8vw, 4rem) clamp(1rem, 5%, 4rem) clamp(4rem, 8vw, 5rem);
   background: transparent;
   overflow-x: hidden;
+  position: relative;
+}
+
+.team-section::before {
+  content: '';
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: rgba(184, 54, 254, 0.06);
+  border-radius: 50%;
+  filter: blur(100px);
+  bottom: -100px;
+  left: 10%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 1440px) {
+  .team-section {
+    padding: clamp(4rem, 6vw, 5rem) clamp(2rem, 3%, 4rem);
+  }
 }
 
 .team-container {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   width: 100%;
+}
+
+@media (min-width: 1440px) {
+  .team-container {
+    max-width: 1360px;
+  }
 }
 
 /* ── Captain / Executive (centered single card) ── */

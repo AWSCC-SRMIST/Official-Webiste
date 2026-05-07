@@ -1,11 +1,23 @@
 .global-section {
-  padding: 80px 24px;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5%, 4rem);
   background: linear-gradient(to bottom, #050005, #000000);
 }
 
+@media (min-width: 1440px) {
+  .global-section {
+    padding: clamp(4rem, 6vw, 5rem) clamp(2rem, 3%, 4rem);
+  }
+}
+
 .global-container {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+  .global-container {
+    max-width: 1360px;
+  }
 }
 
 .world-map-wrapper {

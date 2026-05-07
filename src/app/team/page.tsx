@@ -4,7 +4,7 @@ import TeamSection from '../../Components/TeamSection/TeamSection'
 import Footer from '../../Components/Footer/Footer'
 
 export const metadata: Metadata = {
-  title: 'Team | AWSCC-SRMIST',
+  title: 'Team | AWSSBG-SRMIST',
   description: 'Meet the team behind AWS Student Builder Group - SRMIST. Captains, Directors, Leads, and Co-Leads across Technical, Corporate, and Creatives domains.',
 }
 

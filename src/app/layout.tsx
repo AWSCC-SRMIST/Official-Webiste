@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'AWSCC-SRMIST',
-    template: '%s | AWSCC-SRMIST',
+    default: 'AWSSBG-SRMIST',
+    template: '%s | AWSSBG-SRMIST',
   },
   description: 'Official student community for cloud builders at SRM Institute of Science and Technology. Workshops, events, and AWS learning.',
   icons: {

@@ -1,5 +1,5 @@
 /**
- * Events data for the AWSCC-SRMIST website.
+ * Events data for the AWSSBG-SRMIST website.
  *
  * HOW TO ADD A NEW EVENT:
  * 1. Create a subfolder in your Google Drive events folder.

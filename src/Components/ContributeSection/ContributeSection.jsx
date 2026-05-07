@@ -12,14 +12,14 @@ const ways = [
     title: "Sponsor Us",
     desc: "Want to support the next generation of cloud builders? Partner with AWS Student Builder Group - SRMIST to sponsor events, workshops, or resources. Get visibility with 1000+ students.",
     cta: "Get in Touch",
-    link: "mailto:sponsorship.awscc.srmist@gmail.com?subject=Sponsorship Inquiry",
+    link: "mailto:sponsorship.awssbg.srmist@gmail.com?subject=Sponsorship Inquiry",
   },
   {
     icon: <FaLightbulb size={32} />,
     title: "Propose an Event",
     desc: "Have an idea for a workshop, talk, or hackathon you want to conduct? We'd love to hear it. Bring your expertise to our community.",
     cta: "Suggest an Event",
-    link: "mailto:awscc.srmist@gmail.com?subject=Event Proposal",
+    link: "mailto:awssbg.srmist@gmail.com?subject=Event Proposal",
   },
 ];
 

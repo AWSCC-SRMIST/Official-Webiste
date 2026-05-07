@@ -1,5 +1,5 @@
 .benefits-section {
-  padding: 80px 24px;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5%, 4rem);
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -7,7 +7,7 @@
 
 .benefits-section::before {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 400px;
   height: 400px;
   background: rgba(167, 97, 255, 0.07);
@@ -16,11 +16,12 @@
   bottom: -80px;
   right: 5%;
   pointer-events: none;
+  z-index: 0;
 }
 
 .benefits-section::after {
   content: '';
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 300px;
   background: rgba(184, 54, 254, 0.06);
@@ -29,11 +30,24 @@
   top: 0;
   left: -80px;
   pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 1440px) {
+  .benefits-section {
+    padding: clamp(4rem, 6vw, 5rem) clamp(2rem, 3%, 4rem);
+  }
 }
 
 .benefits-container {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+  .benefits-container {
+    max-width: 1360px;
+  }
 }
 
 .benefits-grid {
